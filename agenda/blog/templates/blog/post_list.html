@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header {
+            background-color: rgb(246, 90, 6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            height: 20vh;
+        }
+        header h1 {
+            margin-bottom: -1vh;
+        }
+        nav {
+            background-color: rgb(185, 76, 16);
+            margin-top: -1.2vh;
+            margin-bottom: 1.2vh;
+            padding-top: 1px;
+            border-bottom: yellow solid 2px;
+        }
+        ul {
+            list-style: none;
+            text-align: center;
+            position: relative;
+            right: 5%;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        li {
+            padding-bottom: .5rem;
+        }
+        footer {
+            background-color:rgb(185, 76, 16);
+            text-align: center;
+        }
+        footer p:first-of-type {
+            padding-top: 1.5rem;
+            margin-bottom: 0;
+        }
+        footer p:last-of-type {
+            padding-bottom: 1rem;
+            margin-top: 0;
+        }
+        article {
+            width: 30%;
+            padding: 5px 10px;
+            margin: 50px auto;
+            border: rgb(124, 19, 19) 5px solid;
+            color: whitesmoke;
+        }
+        .date {
+            font-size: 0.75rem;
+            float: right;
+            position: relative;
+            bottom: 1rem;
+        }
+        .left {
+            float: left;
+            width: 25%;
+            margin-top: 6.5%;
+            margin-left: 5%;
+        }
+        .right {
+            float: right;
+            width: 25%;
+            margin-top: 5%;
+            margin-right: 5%;
+        }
+        .holder {
+            background: #0F2027;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            margin-top: -2.5%;
+        }
+        @media only screen and (min-width: 720px){
+            ul {
+                display: flex;
+                margin-left: 6.5%;
+            }
+            .navbar {
+                margin-left: 2rem;
+            }
+            .navbar li {
+                margin-right: 2rem;
+            }
+        }
+
+        @media screen and (min-width: 1300px) {
+            .navbar {
+                margin-left: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    <header>
+        <h1>Muziekschool H&J</h1>
+        <p>Luisterend oor voor talent!</p>
+    </header>
+    <nav>
+        <ul class="navbar">
+            <li><a href="https://githubsucksa.github.io/kutopdracht/index">Home</a></li>
+            <li><a href="https://githubsucksa.github.io/kutopdracht/overons">Over ons</a></li>
+            <li><a href="https://githubsucksa.github.io/kutopdracht/tarieven">Tarieven</a></li>
+            <li><a href="https://githubsucksa.github.io/kutopdracht/contact">Contact</a></li>
+            <li><a href="https://ianpjotr30.pythonanywhere.com/">Agenda</a></li>
+        </ul>
+    </nav>
+      <div class="holder">
+        <img class="left" src="https://i.ytimg.com/vi/2DLnhdnSUVs/maxresdefault.jpg"/>
+        <img class="right" src="https://www.spectator.co.uk/wp-content/uploads/2022/04/GettyImages-462448191.jpg"/>
+        {% for post in posts %}
+        <article class="post">
+            <h2>{{ post.description }}</h2>
+            <h3>${{ post.cost }},-</h3>
+            <p><b>Starting time:</b> {{ post.start }}</p>
+            <p><b>End time:</b> {{ post.end }}</p>
+            <time class="date">
+                Published at: {{ post.date }}
+            </time>
+        </article>
+        {% endfor %}
+        <footer>
+            <p><strong>&#169; Copyright 2021 Muziekschool H&J</strong></p>
+            <p><strong>(Dit is een oefenopdracht, alle informatie op deze website is fictief.)</strong></p>
+        </footer>
+        {% endblock %}
+    </div>
+</body>
+</html>
